@@ -35,6 +35,8 @@ import {
   Close as CloseIcon,
 } from "@mui/icons-material";
 
+import Image from "next/image";
+import MonieShopLog from "./assets/img/monie-shop-logo.png";
 // Define the structure of our metrics data
 interface Metrics {
   highestSalesVolume: { date: string; volume: number };
@@ -105,20 +107,32 @@ const MetricCard = ({
 
 // Update the data format guide
 const dataFormatGuide = `
-Expected Format (CSV/TXT):
-salesStaffId,timestamp,[product1:quantity|product2:quantity...],amount
+Data Format Guide
+
+
+Upload your data in the following format:
+Each line in your file should represent a single transaction in CSV or TXT format using the structure:
+
+  salesStaffId, timestamp, [products], amount
+
+Where:
+
+• salesStaffId: The ID of the sales staff (number).
+• timestamp: The date and time of the sale in ISO format (YYYY-MM-DDTHH:mm:ss).
+• products: A list of product:quantity pairs enclosed in square brackets. Pairs are separated by a pipe (|) (format: productId:quantity).
+• amount: The sale amount in Naira (can be a decimal).
 
 Example:
 8,2025-01-01T14:56:52,[149543:7|649302:7|45995:8|231096:2],30160.973
 
-Where:
-- salesStaffId: Staff ID number
-- timestamp: ISO format (YYYY-MM-DDTHH:mm:ss)
-- products: List of productId:quantity pairs in square brackets, separated by |
-- amount: Sale amount in Naira (decimal number)
-
-Sample line from data:
-8,2025-01-01T14:56:52,[149543:7|649302:7|45995:8|231096:2|267360:6|585092:7|182666:2|180450:4|525080:3|152145:7|628952:2|386669:8|950020:2],30160.973
+This example means:
+• Staff ID 8 made a sale on January 1, 2025 at 14:56:52.
+• Products sold:
+   - Product 149543: 7 units
+   - Product 649302: 7 units
+   - Product 45995: 8 units
+   - Product 231096: 2 units
+• Total sale amount: 30,160.973 Naira
 `;
 
 export default function MonieshopAnalytics() {
@@ -360,7 +374,15 @@ export default function MonieshopAnalytics() {
       {/* Header */}
       <AppBar position="static" color="default" elevation={1}>
         <Toolbar>
-          <BarChartIcon sx={{ mr: 2 }} />
+          <Box sx={{ mr: 2 }}>
+            <Image
+              src={MonieShopLog.src}
+              alt="Monie Logo"
+              height={45}
+              width={45}
+              style={{ borderRadius: 4 }}
+            />
+          </Box>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Monieshop Analytics
           </Typography>
@@ -428,12 +450,10 @@ export default function MonieshopAnalytics() {
         {showFormatGuide && (
           <Alert
             severity="info"
-            sx={{ mb: 2 }}
+            sx={{ mb: 2, maxHeight: 200, overflowY: "auto" }}
             onClose={() => setShowFormatGuide(false)}
           >
-            <Typography variant="subtitle2" gutterBottom>
-              Data Format Guide
-            </Typography>
+            <Typography variant="subtitle2">Data Format Guide</Typography>
             <pre style={{ whiteSpace: "pre-wrap", margin: 0 }}>
               {dataFormatGuide}
             </pre>
@@ -564,7 +584,7 @@ export default function MonieshopAnalytics() {
                 variant="outlined"
                 value={prefix}
                 onChange={(e) => setPrefix(e.target.value)}
-                helperText="This prefix will help identify your saved analytics"
+                helperText="This name will help identify your saved Monnie Shop Analytics"
               />
             </Box>
           </DialogContent>
@@ -612,7 +632,7 @@ export default function MonieshopAnalytics() {
       >
         <Container>
           <Typography variant="body2" color="text.secondary" align="center">
-            Built with Next.js and Material-UI
+            &copy; 2025 Monie Shop Daily Analytics System
           </Typography>
         </Container>
       </Box>

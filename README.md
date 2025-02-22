@@ -1,10 +1,16 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## User Interface before Upload
+![alt text](image-1.png)
+## User Interface After Upload
+![alt text](image.png)
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
+npm install
+# or
 npm run dev
 # or
 yarn dev

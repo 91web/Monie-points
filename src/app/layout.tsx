@@ -3,6 +3,7 @@
 import type React from "react";
 
 import { Inter } from "next/font/google";
+// Removed AppRouterCacheProvider import as it's not provided by "next/navigation"
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
@@ -31,12 +32,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
             {children}
           </ThemeProvider>
-        </AppRouterCacheProvider>
       </body>
     </html>
   );
