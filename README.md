@@ -1,4 +1,8 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Monie Shop Analytics Demo Link
+https://monie-points-hhmny9hv6-yusuf-babatundes-projects-b0282a5e.vercel.app/
+
+
 ## User Interface before Upload
 ![alt text](image-1.png)
 ## User Interface After Upload
