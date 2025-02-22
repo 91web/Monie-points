@@ -374,7 +374,7 @@ export default function MonieshopAnalytics() {
       {/* Header */}
       <AppBar position="static" color="default" elevation={1}>
         <Toolbar>
-          <Box sx={{ mr: 2 }}>
+            <Box sx={{ mr: 2 }}>
             <Image
               src={MonieShopLog.src}
               alt="Monie Logo"
@@ -383,14 +383,14 @@ export default function MonieshopAnalytics() {
               style={{ borderRadius: 4 }}
             />
           </Box>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography sx={{ flexGrow: 1, fontSize: { xs: 14, md: 32 }, fontWeight:700 }}>
             Monieshop Analytics
           </Typography>
           <Tooltip title="View Data Format Guide">
             <Button
               startIcon={<InfoIcon />}
               onClick={() => setShowFormatGuide(true)}
-              sx={{ mr: 2 }}
+              sx={{ mr: 2, fontSize: { xs: 10, md: 16 } }}
             >
               Format Guide
             </Button>
@@ -405,7 +405,7 @@ export default function MonieshopAnalytics() {
                 <CloudUploadIcon />
               )
             }
-            sx={{ mr: 2 }}
+            sx={{ mr: 2, fontSize: { xs: 10, md: 16 } }}
             disabled={isReading || isProcessing}
           >
             {isReading ? "Reading File..." : "Upload Data"}
@@ -533,7 +533,13 @@ export default function MonieshopAnalytics() {
         {/* Action Buttons - Update this section */}
         {metrics && (
           <Box
-            sx={{ mt: 4, display: "flex", justifyContent: "center", gap: 2 }}
+            sx={{
+              mt: 4,
+              display: "flex",
+              justifyContent: "center",
+              gap: 2,
+              fontSize: { xs: 10, md: 16 },
+            }}
           >
             <Button
               variant="outlined"
@@ -546,6 +552,7 @@ export default function MonieshopAnalytics() {
             <Button
               variant="outlined"
               color="primary"
+              sx={{ fontSize: { xs: 10, md: 16 } }}
               startIcon={<SaveIcon />}
               onClick={() => setOpenSaveDialog(true)}
             >
@@ -554,6 +561,7 @@ export default function MonieshopAnalytics() {
             <Button
               component="label"
               variant="contained"
+              sx={{ fontSize: { xs: 10, md: 16 } }}
               startIcon={<CloudUploadIcon />}
               disabled={isReading || isProcessing}
             >
@@ -572,7 +580,7 @@ export default function MonieshopAnalytics() {
           <DialogTitle>Save Analytics</DialogTitle>
           <DialogContent>
             <Box sx={{ mt: 2 }}>
-              <Typography variant="body2" color="text.secondary" gutterBottom>
+              <Typography variant="body2" color="text.secondary" >
                 File: {originalFilename}
               </Typography>
               <TextField
@@ -584,7 +592,7 @@ export default function MonieshopAnalytics() {
                 variant="outlined"
                 value={prefix}
                 onChange={(e) => setPrefix(e.target.value)}
-                helperText="This name will help identify your saved Monnie Shop Analytics"
+                helperText="This name will help you identify your saved Monnie Shop Analytics"
               />
             </Box>
           </DialogContent>
